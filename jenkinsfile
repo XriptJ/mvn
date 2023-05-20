@@ -1,0 +1,15 @@
+pipeline{
+    agent{
+        label "build_node"
+    }
+    stages
+    {
+        stage("checking out and buildig the project"){
+            steps{
+                print("checking out")
+                print("building Maven Project")
+                sh "mvn clean install"
+            }
+        }
+    }
+}
