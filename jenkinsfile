@@ -1,14 +1,18 @@
 pipeline{
-    agent{
-        label "build_node"
-    }
+    agent none
     stages
     {
-        stage("checking out and buildig the project"){
+        stage("Discarding old Build and creating new build"){
+            agent
+            {
+                label "build_node"
+            }
             steps{
-                print("checking out")
-                print("building Maven Project")
-                sh "mvn clean install"
+                print("discarding old build")
+                sh "mvn clean"
+                print("creating new build")
+                sh "mvn install"
+                
             }
         }
     }
