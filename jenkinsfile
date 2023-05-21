@@ -12,8 +12,11 @@ pipeline{
                 sh "mvn clean"
                 print("creating new build")
                 sh "mvn install"
-                
+                dir('/home/build_folder/workspace/build_deploy_pipeline/target/'){
+                stash includes: 'test-web.war' , name: 'artifact' 
+              }    
             }
         }
-    }
+      
+     }
 }
